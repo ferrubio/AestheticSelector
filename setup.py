@@ -7,7 +7,7 @@ Usage:
 
 from setuptools import setup
 
-APP = ['AestheticFilter.py']
+APP = ['AestheticSelector.py']
 DATA_FILES = ['Keras_FinetuningAVA_inception_binaryWeights_mse_Adam_LR1e-05_BS64_E20_bestmodel0.h5',
               'Keras_FinetuningAVA_inception_binaryWeights_mse_Adam_LR1e-05_BS64_E20_model.pkl']
 OPTIONS = {'packages':['PIL','wx','pandas','tensorflow','h5py']}

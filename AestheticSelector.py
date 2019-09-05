@@ -46,11 +46,11 @@ class TestThread(Thread):
     def run(self):
         """Run Worker Thread."""
         # This is the code executing in the new thread.
-        with open("Keras_FinetuningAVA_inception_binaryWeights_mse_Adam_LR1e-05_BS64_E20_model.pkl", 'rb') as f:
+        with open("Model_definition.pkl", 'rb') as f:
             model_config = pickle.load(f)
 
         model = Model.from_config(model_config)
-        model.load_weights("Keras_FinetuningAVA_inception_binaryWeights_mse_Adam_LR1e-05_BS64_E20_bestmodel0.h5")
+        model.load_weights("Model_weights.h5")
 
         wx.CallAfter(pub.sendMessage, "update", msg="Making Predictions")
         # El callback aun no funciona, pero para cuando este disponible. De momento hay 3 saltos, uno que carga el
@@ -112,7 +112,7 @@ class MyProgressDialog(wx.Dialog):
 
 class MyFrame(wx.Frame):
     def __init__(self):
-        super().__init__(parent=None, title='Aesthetic Filter', size=(590, 360))
+        super().__init__(parent=None, title='Aesthetic Selector', size=(590, 360))
         panel = wx.Panel(self)
 
         self.currentDirectory = os.getcwd()
@@ -286,23 +286,7 @@ class MyFrame(wx.Frame):
         self.Close()
 
     # ----------------------------------------------------------------------
-    '''
-    def onProcess(self, event):
-        """"""
-        with open("Keras_FinetuningAVA_inception_binaryWeights_mse_Adam_LR1e-05_BS64_E20_model.pkl", 'rb') as f:
-            model_config = pickle.load(f)
-        model = Model.from_config(model_config)
-        model.load_weights("Keras_FinetuningAVA_inception_binaryWeights_mse_Adam_LR1e-05_BS64_E20_bestmodel0.h5")
-        predictions = model.predict_generator(self.mainIterator,
-                                              steps=len(self.mainIterator))
-        predictions = predictions[:,1]
-        order_args = np.argsort(predictions)[::-1]
 
-        subset_images = np.array(self.frame.loc[order_args[0:self.mainIterator.n * self.sliderValue // 100]])
-
-        for idx, x in enumerate(subset_images):
-            copyfile(x[0], os.path.join(self.outputDirectory, "{}_{}".format(idx, x[1])))
-    '''
     def onProcess(self, event):
         """
         Runs the thread
