@@ -9,8 +9,9 @@ from setuptools import setup
 
 APP = ['AestheticSelector.py']
 DATA_FILES = ['Model_weights.h5',
-              'Model_definition.pkl']
-OPTIONS = {'packages':['PIL','wx','pandas','tensorflow','h5py']}
+              'Model_definition.pkl',
+              'instructions.png']
+OPTIONS = {'packages':['PIL','wx','tensorflow','h5py','tf_keras_vis','matplotlib']}
 
 setup(
     app=APP,

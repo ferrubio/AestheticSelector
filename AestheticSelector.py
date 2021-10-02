@@ -2,7 +2,6 @@ import wx
 import os
 import pickle
 import glob
-import pandas as pd
 import numpy as np
 from shutil import copyfile, move
 
@@ -14,7 +13,6 @@ from tf_keras_vis.utils.model_modifiers import ReplaceToLinear
 from tf_keras_vis.utils.scores import CategoricalScore
 from tf_keras_vis.saliency import Saliency
 from tf_keras_vis.gradcam_plus_plus import GradcamPlusPlus
-from tf_keras_vis.utils import normalize
 
 import matplotlib
 matplotlib.use('WXAgg')
