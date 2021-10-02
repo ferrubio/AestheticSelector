@@ -8,8 +8,8 @@ Usage:
 from setuptools import setup
 
 APP = ['AestheticSelector.py']
-DATA_FILES = ['Keras_FinetuningAVA_inception_binaryWeights_mse_Adam_LR1e-05_BS64_E20_bestmodel0.h5',
-              'Keras_FinetuningAVA_inception_binaryWeights_mse_Adam_LR1e-05_BS64_E20_model.pkl']
+DATA_FILES = ['Model_weights.h5',
+              'Model_definition.pkl']
 OPTIONS = {'packages':['PIL','wx','pandas','tensorflow','h5py']}
 
 setup(
